@@ -1,0 +1,51 @@
+<app-navigation></app-navigation>
+
+<app-form-style
+  title="Welcome Back!"
+  subtitle="Don't have an account?"
+  joinUs="Join us today!"
+  formLink="/signup"
+>
+  <form (ngSubmit)="onSubmit()" [formGroup]="authForm">
+    <div class="grid justify-content-center">
+      <div class="col-12 sm:col-10 md:col-8 lg:col-12">
+        <app-input
+          id="email"
+          icon="pi pi-user"
+          inputType="text"
+          label="Email"
+          [control]="$any(authForm).controls['email']"
+        ></app-input>
+      </div>
+
+      <div class="col-12 sm:col-10 md:col-8 lg:col-12">
+        <app-input
+          id="password"
+          icon="pi pi-user"
+          inputType="password"
+          label="Password"
+          [control]="$any(authForm).controls['password']"
+        ></app-input>
+      </div>
+
+      <div
+        *ngIf="authForm.errors"
+        class="col-12 sm:col-10 md:col-8 lg:col-12 margin"
+      >
+        <p *ngIf="authForm.errors?.credentials">Invalid email or password!</p>
+        <p *ngIf="authForm.errors?.unknownError">Failed to Signin!</p>
+      </div>
+
+      <div class="col-6 offset-3 justify-content-center flex">
+        <button
+          pButton
+          pRipple
+          type="submit"
+          label="Sign In"
+          icon="pi pi-sign-in"
+          class="p-button-success w-full"
+        ></button>
+      </div>
+    </div>
+  </form>
+</app-form-style>

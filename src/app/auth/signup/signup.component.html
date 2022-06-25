@@ -1,0 +1,76 @@
+<app-navigation></app-navigation>
+
+<app-form-style
+  title="Hello There!"
+  subtitle="Already have an account?"
+  joinUs="Sign in today!"
+  formLink="/signin"
+>
+  <form (ngSubmit)="onSubmit()" [formGroup]="signUpForm">
+    <div class="grid justify-content-center">
+      <div class="col-12 sm:col-10 md:col-10 lg:col-12">
+        <app-input
+          id="name"
+          inputType="text"
+          label="Username"
+          [control]="$any(signUpForm).controls['name']"
+        ></app-input>
+      </div>
+
+      <div class="col-12 sm:col-10 md:col-10 lg:col-12">
+        <app-input
+          id="email"
+          inputType="text"
+          label="Email"
+          [control]="$any(signUpForm).controls['email']"
+        ></app-input>
+      </div>
+
+      <div class="col-12 sm:col-10 md:col-10 lg:col-12">
+        <app-input
+          id="password"
+          inputType="password"
+          label="Password"
+          [control]="$any(signUpForm).controls['password']"
+        ></app-input>
+      </div>
+
+      <div class="col-12 sm:col-10 md:col-10 lg:col-12">
+        <app-input
+          id="passwordConfirmation"
+          inputType="password"
+          label="Password Confirmation"
+          [control]="$any(signUpForm).controls['passwordConfirmation']"
+        ></app-input>
+      </div>
+
+      <div
+        *ngIf="
+          $any(signUpForm).controls['password'] &&
+          $any(signUpForm).controls['passwordConfirmation'].touched &&
+          signUpForm.errors
+        "
+        class="col-12 sm:col-10 md:col-8 lg:col-12 margin"
+      >
+        <p *ngIf="signUpForm.errors?.passwordsDontMatch">
+          Password and Password Confirmation must match!
+        </p>
+        <p *ngIf="signUpForm.errors?.noConnection">
+          No internet connection detected. Failed to Signup!
+        </p>
+        <p *ngIf="signUpForm.errors?.unknownError">Failed to Signup!</p>
+      </div>
+
+      <div class="col-6 offset-3 sm-col-10 justify-content-center flex">
+        <button
+          pButton
+          pRipple
+          type="submit"
+          label="Sign Up"
+          icon="pi pi-user-plus"
+          class="p-button-success w-full"
+        ></button>
+      </div>
+    </div>
+  </form>
+</app-form-style>

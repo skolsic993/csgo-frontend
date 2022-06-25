@@ -1,0 +1,16 @@
+:host {
+  display: block;
+  margin-bottom: 1em;
+
+  p {
+    margin: 5px 0;
+  }
+
+  .p-float-label label {
+    letter-spacing: 1px;
+  }
+
+  .p-float-label input:focus ~ label {
+    text-transform: uppercase;
+  }
+}

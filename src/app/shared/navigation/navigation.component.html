@@ -1,0 +1,6 @@
+<ng-container *ngIf="signedIn$ | async">
+  <p-menubar [model]="items"></p-menubar>
+</ng-container>
+<ng-container *ngIf="!(signedIn$ | async)">
+  <p-menubar [model]="register"></p-menubar>
+</ng-container>
