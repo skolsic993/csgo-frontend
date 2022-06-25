@@ -1,3 +1,13 @@
 <app-navigation></app-navigation>
 
+<h5>Basic</h5>
+<p-autoComplete 
+  [(ngModel)]="selectedTournament" 
+  [suggestions]="filteredTournaments" 
+  (completeMethod)="filterTournament($event)"
+  field="name" 
+  [minLength]="1"
+  (onSelect)="selected($event)"
+></p-autoComplete>
 
+{{selectedTournament?.name}}
