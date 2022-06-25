@@ -1,10 +1,8 @@
 <div class="p-inputgroup">
-  
   <span class="p-float-label">
     <input [id]="id" [type]="inputType" pInputText [formControl]="control" />
     <label [for]="id">{{ label }}</label>
   </span>
-  
 </div>
 <div *ngIf="showErrors()">
   <p *ngIf="control.errors!.required">Value is required!</p>
