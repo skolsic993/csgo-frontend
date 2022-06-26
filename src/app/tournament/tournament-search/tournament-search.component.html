@@ -10,6 +10,10 @@
   (onSelect)="selected($event)"
 ></p-autoComplete>
 
-<div *ngFor="let tournament of ($tournaments | async)">
-  <h2>{{tournament.name}}</h2>
+<div class="surface-ground px-4 py-8 md:px-6 lg:px-8">
+  <div class="grid" >
+    <div class="col-12 sm:col-6 md:col:6 lg:col-4" *ngFor="let tournament of ($tournaments | async)">
+      <app-tournament-card [tournament]="tournament"></app-tournament-card>
+    </div>
+  </div>
 </div>

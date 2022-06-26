@@ -46,7 +46,7 @@ export class TournamentSearchComponent implements OnInit {
   }
 
   selected(event: any): void { 
-    this.tournamentService.searchTournaments({name: event.name})
+    this.$tournaments = this.tournamentService.searchTournaments({name: event.name})
   }
 
   getSuggestedTournamentsByName(query: string): void {
