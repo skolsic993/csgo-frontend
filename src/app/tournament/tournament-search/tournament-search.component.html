@@ -10,4 +10,6 @@
   (onSelect)="selected($event)"
 ></p-autoComplete>
 
-{{selectedTournament?.name}}
+<div *ngFor="let tournament of ($tournaments | async)">
+  <h2>{{tournament.name}}</h2>
+</div>

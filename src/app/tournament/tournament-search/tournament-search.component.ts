@@ -1,5 +1,7 @@
+import { Observable, of } from 'rxjs';
 import { TournamentService } from './../tournament.service';
 import { Component, OnInit } from '@angular/core';
+import { Tournament } from 'src/app/models/Tournament';
 
 interface TournamentSearchTemplate {
   name: string,
@@ -13,9 +15,7 @@ interface TournamentSearchTemplate {
 })
 export class TournamentSearchComponent implements OnInit {
 
-  constructor(
-    private tournamentService: TournamentService,
-  ) {}
+  $tournaments?: Observable<Tournament[]> = of([]);
 
   suggestedTournaments: TournamentSearchTemplate[] = [
     {"name": "Winter", "code": "WI"}, 
@@ -32,18 +32,21 @@ export class TournamentSearchComponent implements OnInit {
   selectedTournaments!: TournamentSearchTemplate[];
   filteredTournaments!: TournamentSearchTemplate[];
   selectedTournament!: TournamentSearchTemplate;
-  
 
+  constructor(
+    private tournamentService: TournamentService,
+  ) {}
+  
   ngOnInit(): void {}
 
   filterTournament(event: any): void {
     this.getSuggestedTournamentsByName(event.query);
 
-    this.tournamentService.searchTournaments({ name: event.query})
+    this.$tournaments = this.tournamentService.searchTournaments({ name: event.query});
   }
 
   selected(event: any): void { 
-    this.tournamentService.searchTournaments(event.name)
+    this.tournamentService.searchTournaments({name: event.name})
   }
 
   getSuggestedTournamentsByName(query: string): void {
@@ -55,8 +58,6 @@ export class TournamentSearchComponent implements OnInit {
     }
 
     this.filteredTournaments = filtered;
-
-    this.tournamentService.searchTournaments({ name: query });
   }
 
 }
