@@ -15,9 +15,10 @@ import { TournamentSearchComponent } from './tournament-search/tournament-search
 import { AuthHttpInterceptor } from '../auth/auth-http-interceptor';
 import { TournamentCardComponent } from './tournament-card/tournament-card.component';
 import { ButtonModule } from 'primeng/button';
+import { TournamentOrganizerComponent } from './tournament-organizer/tournament-organizer.component';
 
 @NgModule({
-  declarations: [TournamentSearchComponent, TournamentCardComponent],
+  declarations: [TournamentSearchComponent, TournamentCardComponent, TournamentOrganizerComponent],
   imports: [
     CommonModule, 
     TournamentRoutingModule, 

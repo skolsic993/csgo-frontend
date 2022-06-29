@@ -13,12 +13,19 @@ interface TournamentResponse {
   providedIn: 'root'
 })
 export class TournamentService {
-  private url: string = 'https://counter-strike-backend.herokuapp.com/api/tournaments'
 
   constructor(private http: HttpClient) {}
 
   searchTournaments(credentials: any): Observable<Tournament[]> {
-    return this.http.get<TournamentResponse>(`${this.url}/${credentials.name}`)
+    const url: string = 'https://counter-strike-backend.herokuapp.com/api/tournaments'
+
+    return this.http.get<TournamentResponse>(`${url}/${credentials.name}`)
       .pipe(pluck('items'));
+  }
+
+  getOrganizer(id: string) {
+    const url = 'https://counter-strike-backend.herokuapp.com/api/tournaments/organizer';
+
+    return this.http.get<any>(`${url}/${id}`);
   }
 }
