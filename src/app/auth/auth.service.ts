@@ -62,8 +62,9 @@ export class AuthService {
   }
 
   checkAuthStatus() {
+    const headers = new HttpHeaders({ 'Access-Control-Allow-Origin': '*' });
     return this.http
-      .get<AuthCheckResponse>(`${this.rootUrl}/auth/signedin`)
+      .get<AuthCheckResponse>(`${this.rootUrl}/auth/signedin`, {headers: headers})
       .pipe(
         tap(({ authenticated }) => {
           this.signedIn$.next(authenticated);
