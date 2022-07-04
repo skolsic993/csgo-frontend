@@ -1,3 +1,4 @@
+import { Organizer } from './../../../../../csgo-backend/src/models/organizer.model';
 import { TournamentService } from './../tournament.service';
 import { pluck } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
@@ -11,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class TournamentOrganizerComponent implements OnInit {
 
   id!: string;
+  organizer!: Organizer;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,9 +25,10 @@ export class TournamentOrganizerComponent implements OnInit {
     this.getTournamentOrganizerById(this.id);
   }
 
-  getTournamentOrganizerById(id: string) {
-    this.tournamentService.getOrganizer(id).subscribe((value) => {
+  getTournamentOrganizerById(id: string): void {
+    this.tournamentService.getOrganizer(id).subscribe((value: Organizer) => {
       console.log(value)
+      this.organizer = value;
     })
   }
 
