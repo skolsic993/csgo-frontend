@@ -27,7 +27,6 @@ export class TournamentOrganizerComponent implements OnInit {
 
   getTournamentOrganizerById(id: string): void {
     this.tournamentService.getOrganizer(id).subscribe((value: Organizer) => {
-      console.log(value)
       this.organizer = value;
     })
   }

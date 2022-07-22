@@ -7,6 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { PickListModule } from 'primeng/picklist';
 import { RippleModule } from 'primeng/ripple';
+import { ChipModule } from 'primeng/chip';
+import { TabViewModule } from 'primeng/tabview';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -16,9 +18,11 @@ import { AuthHttpInterceptor } from '../auth/auth-http-interceptor';
 import { TournamentCardComponent } from './tournament-card/tournament-card.component';
 import { ButtonModule } from 'primeng/button';
 import { TournamentOrganizerComponent } from './tournament-organizer/tournament-organizer.component';
+import { TournamentDetailsComponent } from './tournament-details/tournament-details.component';
+import { TournamentOverviewComponent } from './tournament-overview/tournament-overview.component';
 
 @NgModule({
-  declarations: [TournamentSearchComponent, TournamentCardComponent, TournamentOrganizerComponent],
+  declarations: [TournamentSearchComponent, TournamentCardComponent, TournamentOrganizerComponent, TournamentDetailsComponent, TournamentOverviewComponent],
   imports: [
     CommonModule, 
     TournamentRoutingModule, 
@@ -27,7 +31,9 @@ import { TournamentOrganizerComponent } from './tournament-organizer/tournament-
     AutoCompleteModule, 
     FormsModule, 
     PickListModule, 
-    RippleModule
+    RippleModule,
+    ChipModule,
+    TabViewModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },

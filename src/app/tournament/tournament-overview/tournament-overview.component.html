@@ -1,0 +1,31 @@
+<ul class="list-none p-0 m-0">
+  <li class="flex align-items-center py-3 px-2 surface-border flex-wrap">
+    <div class="text-500 w-6 md:w-2 font-medium">Name</div>
+    <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{{organizer?.name}}</div>
+  </li>
+  <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+    <div class="text-500 w-6 md:w-2 font-medium">About</div>
+    <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{{organizer?.description}}</div>
+  </li>
+  <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+    <div class="text-500 w-6 md:w-2 font-medium">Type</div>
+    <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{{organizer?.type || 'organization'}}</div>
+  </li>
+  <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+    <div class="text-500 w-6 md:w-2 mb-2 font-medium">Tags</div>
+    <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">
+      <p-chip label="#Gamer" class="mr-2"></p-chip>
+      <p-chip label="#Esports" class="mr-2"></p-chip>
+      <p-chip label="#Gaming" class="mr-2"></p-chip>
+      <p-chip label="#CsGo" class="mr-2"></p-chip>
+      <p-chip label="#Team" class="mr-2"></p-chip>
+    </div>
+  </li>
+  <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+    <div class="text-500 w-6 md:w-2 mb-2 font-medium">Links</div>
+    <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">
+    <a pButton pRipple label="Website" target="_blank" [href]="organizer?.website" class="p-button-outlined mr-2"></a>
+    <a pButton pRipple label="Faceit" target="_blank" [href]="getFaceitUrl()" class="p-button-outlined"></a>
+    </div>
+  </li>
+</ul>

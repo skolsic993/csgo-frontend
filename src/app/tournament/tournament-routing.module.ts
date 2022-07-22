@@ -12,7 +12,7 @@ const routes: Routes = [
     path: ':id',
     component: TournamentOrganizerComponent
   }
-];
+]
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
