@@ -1,12 +1,13 @@
-import { User } from './../models/User';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { User } from './../models/User';
 
 interface SignUpCredentials {
   name: string;
   email: string;
+  nick: string;
   password: string;
   passwordConfirmation: string;
 }
@@ -14,14 +15,17 @@ interface SignUpCredentials {
 interface AuthCheckResponse {
   authenticated: boolean;
   name: string;
+  nick: string;
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  rootUrl = 'https://counter-strike-backend.herokuapp.com/api';
-  signedIn$ = new BehaviorSubject<null | boolean>(null);
+  private rootUrl = 'http://localhost:1337/api';
+  public signedIn$ = new BehaviorSubject<null | boolean>(null);
+  public user$ = new BehaviorSubject<User>(null);
+  public nick$ = new BehaviorSubject<string>('');
 
   constructor(private http: HttpClient) {}
 
@@ -65,7 +69,8 @@ export class AuthService {
     return this.http
       .get<AuthCheckResponse>(`${this.rootUrl}/auth/signedin`)
       .pipe(
-        tap(({ authenticated }) => {
+        tap(({ authenticated, nick }) => {
+          this.nick$.next(nick);
           this.signedIn$.next(authenticated);
         })
       );

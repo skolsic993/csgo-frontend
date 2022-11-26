@@ -1,14 +1,20 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { InputComponent } from './input/input.component';
+import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
+import { InputComponent } from './input/input.component';
 import { NavigationComponent } from './navigation/navigation.component';
 
+import { MenuModule } from 'primeng/menu';
 import { MenubarModule } from 'primeng/menubar';
+import { RippleModule } from 'primeng/ripple';
+import { SlideMenuModule } from 'primeng/slidemenu';
+import { SpeedDialModule } from 'primeng/speeddial';
+import { StyleClassModule } from 'primeng/styleclass';
 import { TabViewModule } from 'primeng/tabview';
-import { FormStyleComponent } from './form-style/form-style.component';
 import { FormHeaderComponent } from './form-header/form-header.component';
+import { FormStyleComponent } from './form-style/form-style.component';
+import { SideNavigationComponent } from './side-navigation/side-navigation.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +22,7 @@ import { FormHeaderComponent } from './form-header/form-header.component';
     NavigationComponent,
     FormStyleComponent,
     FormHeaderComponent,
+    SideNavigationComponent,
   ],
   imports: [
     CommonModule,
@@ -23,7 +30,17 @@ import { FormHeaderComponent } from './form-header/form-header.component';
     InputTextModule,
     MenubarModule,
     TabViewModule,
+    SlideMenuModule,
+    SpeedDialModule,
+    StyleClassModule,
+    RippleModule,
+    MenuModule,
   ],
-  exports: [InputComponent, NavigationComponent, FormStyleComponent],
+  exports: [
+    InputComponent,
+    NavigationComponent,
+    FormStyleComponent,
+    SideNavigationComponent,
+  ],
 })
 export class SharedModule {}

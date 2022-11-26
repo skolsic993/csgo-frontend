@@ -19,6 +19,15 @@
 
       <div class="col-12 sm:col-10 md:col-10 lg:col-12">
         <app-input
+          id="nick"
+          inputType="text"
+          label="Nickname"
+          [control]="$any(signUpForm).controls['nick']"
+        ></app-input>
+      </div>
+
+      <div class="col-12 sm:col-10 md:col-10 lg:col-12">
+        <app-input
           id="email"
           inputType="text"
           label="Email"

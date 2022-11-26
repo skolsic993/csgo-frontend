@@ -1,10 +1,10 @@
-import { Router } from '@angular/router';
-import { AuthService } from './../auth.service';
-import { UniqueEmail } from './../validators/unique-email';
-import { MatchPassword } from './../validators/match-password';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { PrimeNGConfig } from 'primeng/api';
+import { AuthService } from './../auth.service';
+import { MatchPassword } from './../validators/match-password';
+import { UniqueEmail } from './../validators/unique-email';
 
 @Component({
   selector: 'app-signup',
@@ -19,6 +19,12 @@ export class SignupComponent implements OnInit {
         Validators.minLength(3),
         Validators.maxLength(20),
         Validators.pattern(/^[a-zA-Z0-9]+$/),
+      ]),
+      nick: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(20),
+        Validators.pattern(/^[a-zA-Z0-9!@#$&()`_.+,/"-]*$/),
       ]),
       email: new FormControl(
         '',

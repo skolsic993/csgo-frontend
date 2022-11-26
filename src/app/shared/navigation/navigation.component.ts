@@ -1,7 +1,7 @@
+import { Component, OnInit } from '@angular/core';
+import { MenuItem, PrimeNGConfig } from 'primeng/api';
 import { BehaviorSubject } from 'rxjs';
 import { AuthService } from './../../auth/auth.service';
-import { Component, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-navigation',
@@ -9,26 +9,29 @@ import { MenuItem } from 'primeng/api';
   styleUrls: ['./navigation.component.scss'],
 })
 export class NavigationComponent implements OnInit {
-  register!: MenuItem[];
-  items!: MenuItem[];
+  public register!: MenuItem[];
+  public items!: MenuItem[];
 
   signedIn$!: BehaviorSubject<boolean | null>;
 
-  constructor(private authService: AuthService) {
+  constructor(
+    private authService: AuthService,
+    private primengConfig: PrimeNGConfig
+  ) {
     this.signedIn$ = this.authService.signedIn$;
   }
 
   ngOnInit(): void {
+    this.primengConfig.ripple = true;
     this.getRegisterLinks();
     this.getItemsLinks();
 
     this.authService.checkAuthStatus().subscribe(() => {});
   }
 
-  getRegisterLinks() {
+  public getRegisterLinks() {
     return (this.register = [
       {
-        label: 'Home',
         icon: 'pi pi-fw pi-home',
         routerLink: ['/'],
         routerLinkActiveOptions: {
@@ -36,19 +39,17 @@ export class NavigationComponent implements OnInit {
         },
       },
       {
-        label: 'Sign In',
         icon: 'pi pi-fw pi pi-sign-in',
         routerLink: ['/signin'],
       },
       {
-        label: 'Sign Up',
-        icon: 'pi pi-fw pi pi-user-plus',
+        icon: 'assets/images/user-icon.png',
         routerLink: ['/signup'],
       },
     ]);
   }
 
-  getItemsLinks() {
+  public getItemsLinks() {
     return (this.items = [
       {
         label: 'Home',
