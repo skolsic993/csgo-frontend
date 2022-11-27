@@ -1,0 +1,62 @@
+<div
+  class="flex align-items-start flex-column lg:flex-row lg:justify-content-between"
+>
+  <div class="flex align-items-start flex-column md:flex-row">
+    <img
+      [src]="faceitAccount?.avatar"
+      class="mr-5 mb-3 lg:mb-0 border-circle shadow-4"
+      style="width: 100px; height: 100px"
+    />
+    <div>
+      <span class="text-900 font-medium text-3xl">{{
+        faceitAccount?.nickname
+      }}</span>
+
+      <i class="pi pi-star text-2xl ml-4 text-yellow-500"></i>
+      <div class="flex align-items-center flex-wrap text-sm">
+        <div class="mr-5 mt-3">
+          <span class="font-medium text-500">{{ "nickname" | uppercase }}</span>
+          <div class="text-700 mt-2">{{ faceitAccount?.steam_nickname }}</div>
+        </div>
+        <div class="mr-5 mt-3">
+          <span class="font-medium text-500">{{ "country" | uppercase }}</span>
+          <div class="text-700 mt-2">
+            {{ faceitAccount?.country | uppercase }}
+          </div>
+        </div>
+        <div class="mr-5 mt-3">
+          <span class="font-medium text-500">{{ "region" | uppercase }}</span>
+          <div class="text-700 mt-2">
+            {{ faceitAccount?.games?.csgo?.region | uppercase }}
+          </div>
+        </div>
+        <div class="mr-5 mt-3">
+          <span class="font-medium text-500">{{ "level" | uppercase }}</span>
+          <div class="text-700 mt-2">
+            {{ faceitAccount?.games?.csgo?.skill_level }}
+          </div>
+        </div>
+        <div class="mr-5 mt-3">
+          <span class="font-medium text-500">{{ "elo" | uppercase }}</span>
+          <div class="text-700 mt-2">
+            {{ faceitAccount?.games?.csgo?.faceit_elo }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mt-3 lg:mt-0">
+    <a
+      [href]="faceitAccount?.faceit_url"
+      target="_blank"
+      style="text-decoration: none"
+    >
+      <button
+        pButton
+        pRipple
+        icon="pi pi-arrow-up-right"
+        class="p-button-rounded p-button-success"
+      ></button
+    ></a>
+  </div>
+</div>

@@ -5,18 +5,37 @@
   </span>
 </div>
 <div *ngIf="showErrors()">
-  <p *ngIf="control.errors!.required">Value is required!</p>
+  <p *ngIf="control.errors!.required">
+    <p-message severity="error" text="Value is required!"></p-message>
+  </p>
   <p *ngIf="control.errors!.minlength">
-    Value you enter is
-    {{ control.errors?.minlength.actualLength }} characters long, but it must be
-    at least {{ control.errors?.minlength.requiredLength }} characters!
+    <p-message
+      severity="error"
+      text=" Value you enter is
+    {{ control.errors?.minlength.actualLength }} characters long, but it must
+    be at least {{ control.errors?.minlength.requiredLength }} characters!"
+    >
+    </p-message>
   </p>
   <p *ngIf="control.errors!.maxlength">
-    Value you enter is
+    <p-message
+      severity="error"
+      text="Value you enter is
     {{ control.errors?.maxlength.actualLength }} characters long, but it cannot
-    be longer than {{ control.errors?.maxlength.requiredLength }} characters!
+    be longer than {{ control.errors?.maxlength.requiredLength }} characters!"
+    >
+    </p-message>
   </p>
-  <p *ngIf="control.errors!.pattern">Invalid format!</p>
-  <p *ngIf="control.errors!.nonUniqueEmail">Email is taken!</p>
-  <p *ngIf="control.errors!.noConnection">Check your internet connection!</p>
+  <p *ngIf="control.errors!.pattern">
+    <p-message severity="error" text="Invalid format!"></p-message>
+  </p>
+  <p *ngIf="control.errors!.nonUniqueEmail">
+    <p-message severity="error" text="Email is taken!"></p-message>
+  </p>
+  <p *ngIf="control.errors!.noConnection">
+    <p-message
+      severity="error"
+      text="Check your internet connection!"
+    ></p-message>
+  </p>
 </div>

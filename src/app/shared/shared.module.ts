@@ -7,6 +7,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 
 import { MenuModule } from 'primeng/menu';
 import { MenubarModule } from 'primeng/menubar';
+import { MessageModule } from 'primeng/message';
 import { RippleModule } from 'primeng/ripple';
 import { SlideMenuModule } from 'primeng/slidemenu';
 import { SpeedDialModule } from 'primeng/speeddial';
@@ -35,6 +36,7 @@ import { SideNavigationComponent } from './side-navigation/side-navigation.compo
     StyleClassModule,
     RippleModule,
     MenuModule,
+    MessageModule,
   ],
   exports: [
     InputComponent,
