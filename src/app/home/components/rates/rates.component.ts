@@ -10,6 +10,7 @@ export class RatesComponent implements OnInit {
   @Input() rate: string;
   @Input() average: string;
   @Input() text: string;
+  @Input() icon: string;
 
   constructor() {}
 

@@ -21,4 +21,17 @@ export class HomeStatisticsServiceService {
 
     return this.http.get<UserStats>(`${url}/${id}`);
   }
+
+  public getPlayerById(id: string): Observable<FaceitAccount> {
+    const url = 'http://localhost:1337/api/players';
+
+    return this.http.get<FaceitAccount>(`${url}/${id}`);
+  }
+
+  public getFriendsFaceitAccount(ids: string[]): Observable<FaceitAccount[]> {
+    const url = 'http://localhost:1337/api/friends';
+    const properIds = ids.join('&&');
+
+    return this.http.get<FaceitAccount[]>(`${url}/${properIds}`);
+  }
 }

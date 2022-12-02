@@ -13,6 +13,6 @@ export interface UserStats {
     recentResults: string[];
     matches: string;
     Wins: string;
-    segments: Segment[];
   };
+  segments: Segment[];
 }
