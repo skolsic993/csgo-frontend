@@ -1,94 +1,24 @@
-<div class="shadow-2 surface-card border-round p-4 h-full">
-  <!--<p-tabView [(activeIndex)]="activeIndex" *ngIf="segments$ | async">
-    <ng-container *ngFor="let item of segments$ | async; let i = index">
-      <p-tabPanel [header]="item?.label">
-        <div class="flex align-items-start mb-5">
-          <img src="assets/images/user-icon.png" width="56" height="56" />
-          <div class="ml-3">
-            <span class="block text-900 mb-1 text-xl font-medium">
-              {{ item?.label }}
-            </span>
-            <p class="text-600 mt-0 mb-0">Web Designer</p>
-          </div>
-        </div>
-      </p-tabPanel>
-    </ng-container>
-  </p-tabView>-->
-
-  <div class="flex align-items-center justify-content-between mb-4 relative">
-    <div class="text-900 font-medium text-xl">Notifications</div>
-    <div>
-      <button
-        pButton
-        pRipple
-        icon="pi pi-ellipsis-v"
-        class="p-button-text p-button-plain p-button-rounded"
-        (click)="menu2.toggle($event)"
-      ></button>
-      <p-menu #menu2 [popup]="true" [model]="segments$ | async"></p-menu>
+<div
+  class="shadow-2 surface-card border-round p-4 border-1 surface-border h-full"
+>
+  <app-card-header [title]="'User Map Statistics'">
+    <p-dropdown
+      [options]="maps$ | async"
+      [ngModel]="selectedMap$ | async"
+      [virtualScroll]="true"
+      (ngModelChange)="mapHandler($event)"
+      placeholder="Select Map"
+      optionLabel="label"
+      [showClear]="true"
+      dataKey="label"
+      [style]="{ 'min-width': '170px' }"
+    ></p-dropdown>
+  </app-card-header>
+  <div class="mt-3 flex align-items-start flex-column md:flex-row w-full">
+    <div class="w-full">
+      <app-poler-area-chart
+        [selectedMap$]="selectedMap$"
+      ></app-poler-area-chart>
     </div>
   </div>
-
-  <!--<ul class="list-none p-0 m-0">
-      <li class="mb-5">
-        <div class="flex justify-content-between align-items-center">
-          <span
-            class="text-900 inline-flex justify-content-between align-items-center"
-          >
-            <i class="pi pi-twitter mr-2"></i>
-            <span class="font-medium text-900">Twitter</span>
-          </span>
-          <span class="text-cyan-500 font-medium">23.55%</span>
-        </div>
-        <div
-          class="surface-300 w-full mt-2"
-          style="height: 7px; border-radius: 4px"
-        >
-          <div
-            class="bg-cyan-500 h-full"
-            style="width: 34%; border-radius: 4px"
-          ></div>
-        </div>
-      </li>
-      <li class="mb-5">
-        <div class="flex justify-content-between align-items-center">
-          <span
-            class="text-900 inline-flex justify-content-between align-items-center"
-          >
-            <i class="pi pi-facebook mr-2"></i>
-            <span class="font-medium text-900">Facebook</span>
-          </span>
-          <span class="text-indigo-500 font-medium">78.65%</span>
-        </div>
-        <div
-          class="surface-300 w-full mt-2"
-          style="height: 7px; border-radius: 4px"
-        >
-          <div
-            class="bg-indigo-500 h-full"
-            style="width: 45%; border-radius: 4px"
-          ></div>
-        </div>
-      </li>
-      <li>
-        <div class="flex justify-content-between align-items-center">
-          <span
-            class="text-900 inline-flex justify-content-between align-items-center"
-          >
-            <i class="pi pi-google mr-2"></i>
-            <span class="font-medium text-900">Google</span>
-          </span>
-          <span class="text-orange-500 font-medium">86.54%</span>
-        </div>
-        <div
-          class="surface-300 w-full mt-2"
-          style="height: 7px; border-radius: 4px"
-        >
-          <div
-            class="bg-orange-500 h-full"
-            style="width: 79%; border-radius: 4px"
-          ></div>
-        </div>
-      </li>
-    </ul>-->
 </div>

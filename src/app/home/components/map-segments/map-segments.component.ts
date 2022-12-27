@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { switchMap, tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { concatAll, first, map, switchMap } from 'rxjs/operators';
 import { Segment } from './../../../models/Segment';
 
 @Component({
@@ -9,37 +9,37 @@ import { Segment } from './../../../models/Segment';
   styleUrls: ['./map-segments.component.scss'],
 })
 export class MapSegmentsComponent implements OnInit {
-  public activeIndex: number = 0;
   public currentSegment$!: Observable<Segment>;
+  public maps$: Observable<{ label: string }[]> = of([]);
+  public selectedMap$: Observable<Segment>;
 
   @Input() segments$: Observable<Segment[]>;
 
   constructor() {}
 
-  ngOnInit(): void {
-    this.getMapDetails('de_overpass');
+  ngOnInit() {
+    this.maps$ = this.segments$.pipe(
+      map((csgoMaps: Segment[]) =>
+        csgoMaps.map((mapa) => {
+          return {
+            label: mapa?.label,
+          };
+        })
+      )
+    );
+
+    this.selectedMap$ = this.segments$.pipe(concatAll(), first());
   }
 
-  public getMapDetails(map: string): void {
-    this.currentSegment$ = this.segments$.pipe(
-      switchMap((segments: Segment[]) => {
-        return segments.filter((segment: Segment) => {
-          return segment?.label === map ? segment : null;
-        });
-      })
-    );
-  }
-
-  public switchHeaders(e: any): void {
-    const map = e?.originalEvent?.target?.innerText;
-
-    this.segments$.pipe(
-      tap((v) => console.log(v, 'AA')),
-      switchMap((segments: Segment[]) => {
-        return segments.filter((segment: Segment) => {
-          return segment?.label === map ? segment : null;
-        });
-      })
-    );
+  mapHandler(event: { label: string }) {
+    if (event) {
+      this.selectedMap$ = this.segments$.pipe(
+        switchMap((maps: Segment[]) => {
+          return maps.filter(
+            (selectedMap: Segment) => event?.label === selectedMap?.label
+          );
+        })
+      );
+    }
   }
 }

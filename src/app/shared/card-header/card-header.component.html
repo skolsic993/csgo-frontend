@@ -1,0 +1,8 @@
+<div class="grid justify-content-between gap-3">
+  <span
+    class="text-xl text-900 font-medium"
+    [ngClass]="bonusMargin ? bonusMargin : null"
+    >{{ title }}</span
+  >
+  <ng-content></ng-content>
+</div>

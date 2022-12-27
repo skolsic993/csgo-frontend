@@ -1,0 +1,39 @@
+<div class="shadow-2 surface-card border-round border-1 surface-border p-4">
+  <app-card-header
+    [title]="'Team Members'"
+    [bonusMargin]="'mb-5'"
+  ></app-card-header>
+  <ul class="list-none p-0 m-0" *ngFor="let friend of listOfFriends | async">
+    <li
+      class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4"
+    >
+      <div class="flex">
+        <img
+          [src]="friend?.avatar || 'assets/images/user-icon.png'"
+          class="mr-3 border-circle"
+          style="width: 45px; height: 45px"
+        />
+        <div>
+          <span class="block text-900 font-medium mb-1">
+            {{ friend?.nickname }}
+          </span>
+          <div class="text-600">{{ friend?.steam_nickname }}</div>
+        </div>
+      </div>
+      <div class="mt-2 md:mt-0 flex flex-nowrap">
+        <a
+          [href]="friend?.faceit_url"
+          target="_blank"
+          style="text-decoration: none"
+        >
+          <button
+            pButton
+            pRipple
+            icon="pi pi-arrow-up-right"
+            class="p-button-text p-button-rounded mr-1"
+          ></button>
+        </a>
+      </div>
+    </li>
+  </ul>
+</div>
