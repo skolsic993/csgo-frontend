@@ -121,11 +121,11 @@ export class PolerAreaChartComponent implements OnInit {
       '#FFA726',
       '#26C6DA',
       '#7E57C2',
-      'rgb(255, 99, 132)',
-      'rgb(75, 192, 192)',
-      'rgb(255, 205, 86)',
-      'rgb(201, 203, 207)',
-      'rgb(54, 162, 235)',
+      '#f23081',
+      '#e8f230',
+      '#af45ed',
+      '#b04545',
+      '#4d8afa',
     ].sort(() => (Math.random() > 0.5 ? 1 : -1));
   }
 

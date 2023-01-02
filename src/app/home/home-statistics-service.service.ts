@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FaceitAccount } from '../models/FaceitAccount';
 import { UserStats } from '../models/UserStats';
+import { Hub } from './../models/Hub';
 
 @Injectable({
   providedIn: 'root',
@@ -33,5 +34,11 @@ export class HomeStatisticsServiceService {
     const properIds = ids.join('&&');
 
     return this.http.get<FaceitAccount[]>(`${url}/${properIds}`);
+  }
+
+  public getHubs(id: string): Observable<{ items: Hub[] }> {
+    const url = 'http://localhost:1337/api/hubs';
+
+    return this.http.get<{ items: Hub[] }>(`${url}/${id}`);
   }
 }

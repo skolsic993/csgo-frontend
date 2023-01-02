@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable, pluck } from 'rxjs';
 import { map, shareReplay, switchMap } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/auth.service';
 import { FaceitAccount } from 'src/app/models/FaceitAccount';
+import { Hub } from 'src/app/models/Hub';
 import { HomeStatisticsServiceService } from '../home-statistics-service.service';
 import { Segment } from './../../models/Segment';
 import { UserStats } from './../../models/UserStats';
@@ -18,6 +19,7 @@ export class HomeComponent implements OnInit {
   public userStats$: Observable<UserStats>;
   public segments$: Observable<Segment[]>;
   public listOfFriends$: Observable<FaceitAccount[]>;
+  public userHubs$: Observable<Hub[]>;
 
   constructor(
     public authService: AuthService,
@@ -48,6 +50,14 @@ export class HomeComponent implements OnInit {
       shareReplay()
     );
 
+    this.userHubs$ = this.faceitAccount$.pipe(
+      switchMap((response: FaceitAccount) => {
+        return this.getUserHubs(response.player_id);
+      }),
+      shareReplay(),
+      pluck('items')
+    );
+
     this.segments$ = this.userStats$.pipe(pluck('segments'));
 
     this.listOfFriends$ = this.faceitAccount$.pipe(
@@ -73,5 +83,9 @@ export class HomeComponent implements OnInit {
 
   public getFriendsAccount(ids: string[]): Observable<FaceitAccount[]> {
     return this.homeStatisticsService.getFriendsFaceitAccount(ids);
+  }
+
+  public getUserHubs(id: string): Observable<{ items: Hub[] }> {
+    return this.homeStatisticsService.getHubs(id);
   }
 }

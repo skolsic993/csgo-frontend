@@ -1,0 +1,15 @@
+<ul class="list-none p-0 m-0">
+  <li class="flex justify-content-between align-items-center">
+    <span>AAAA</span>
+    <span>BB</span>
+  </li>
+  <li *ngFor="let userHub of userHubs$ | async | slice : 0 : 5" class="mb-2">
+    <button
+      pButton
+      pRipple
+      type="button"
+      class="p-button-outlined p-button-success"
+      [label]="userHub?.name"
+    ></button>
+  </li>
+</ul>

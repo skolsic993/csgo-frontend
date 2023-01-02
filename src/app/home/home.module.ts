@@ -24,11 +24,14 @@ import { SpeedDialModule } from 'primeng/speeddial';
 import { StyleClassModule } from 'primeng/styleclass';
 import { TabViewModule } from 'primeng/tabview';
 import { MapSegmentsComponent } from './components/map-segments/map-segments.component';
+import { RankingListComponent } from './components/ranking-list/ranking-list.component';
 import { RatesComponent } from './components/rates/rates.component';
 import { FriendListSkeletonComponent } from './components/skeleton/friend-list-skeleton/friend-list-skeleton.component';
+import { MapStatisticsSkeletonComponent } from './components/skeleton/map-statistics-skeleton/map-statistics-skeleton.component';
 import { RatesSkeletonComponent } from './components/skeleton/rates-skeleton/rates-skeleton.component';
 import { UserInformationsSkeletonComponent } from './components/skeleton/user-informations-skeleton/user-informations-skeleton.component';
 import { TeamMembersComponent } from './components/team-members/team-members.component';
+import { UserHubsComponent } from './components/user-hubs/user-hubs.component';
 import { UserInformationsComponent } from './components/user-informations/user-informations.component';
 import { UserStatisticsComponent } from './components/user-statistics/user-statistics.component';
 
@@ -43,6 +46,9 @@ import { UserStatisticsComponent } from './components/user-statistics/user-stati
     FriendListSkeletonComponent,
     MapSegmentsComponent,
     TeamMembersComponent,
+    MapStatisticsSkeletonComponent,
+    UserHubsComponent,
+    RankingListComponent,
   ],
   imports: [
     CommonModule,

@@ -3,7 +3,10 @@
     [title]="'Team Members'"
     [bonusMargin]="'mb-5'"
   ></app-card-header>
-  <ul class="list-none p-0 m-0" *ngFor="let friend of listOfFriends | async">
+  <ul
+    class="list-none p-0 m-0"
+    *ngFor="let friend of listOfFriends | async | slice : 0 : 4"
+  >
     <li
       class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4"
     >
