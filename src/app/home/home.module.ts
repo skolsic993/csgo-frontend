@@ -10,6 +10,9 @@ import { HomeComponent } from './main/home.component';
 
 import { FormsModule } from '@angular/forms';
 
+import { AvatarModule } from 'primeng/avatar';
+import { AvatarGroupModule } from 'primeng/avatargroup';
+import { ChipModule } from 'primeng/chip';
 import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { ListboxModule } from 'primeng/listbox';
@@ -34,6 +37,8 @@ import { TeamMembersComponent } from './components/team-members/team-members.com
 import { UserHubsComponent } from './components/user-hubs/user-hubs.component';
 import { UserInformationsComponent } from './components/user-informations/user-informations.component';
 import { UserStatisticsComponent } from './components/user-statistics/user-statistics.component';
+import { HomeTournamentComponent } from './components/home-tournament/home-tournament.component';
+import { HomeMatchesComponent } from './components/home-matches/home-matches.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +54,8 @@ import { UserStatisticsComponent } from './components/user-statistics/user-stati
     MapStatisticsSkeletonComponent,
     UserHubsComponent,
     RankingListComponent,
+    HomeTournamentComponent,
+    HomeMatchesComponent,
   ],
   imports: [
     CommonModule,
@@ -71,6 +78,9 @@ import { UserStatisticsComponent } from './components/user-statistics/user-stati
     FormsModule,
     RadioButtonModule,
     DialogModule,
+    AvatarModule,
+    AvatarGroupModule,
+    ChipModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },

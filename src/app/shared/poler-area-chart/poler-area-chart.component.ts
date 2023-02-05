@@ -37,6 +37,14 @@ export class PolerAreaChartComponent implements OnInit {
     this.setData();
     this.getResults();
     this.updateChartOptions();
+
+    if (window.innerWidth < 700) {
+      this.setDataWithoutLabels();
+      this.getResults();
+    } else {
+      this.setData();
+      this.getResults();
+    }
   }
 
   ngOnChanges(changes: SimpleChanges) {

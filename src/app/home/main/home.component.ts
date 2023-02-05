@@ -4,7 +4,9 @@ import { map, shareReplay, switchMap } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/auth.service';
 import { FaceitAccount } from 'src/app/models/FaceitAccount';
 import { Hub } from 'src/app/models/Hub';
+import { Rank } from 'src/app/models/Rank';
 import { HomeStatisticsServiceService } from '../home-statistics-service.service';
+import { GlobalTournament } from './../../../../../csgo-backend/src/models/global-tournament';
 import { Segment } from './../../models/Segment';
 import { UserStats } from './../../models/UserStats';
 
@@ -20,6 +22,8 @@ export class HomeComponent implements OnInit {
   public segments$: Observable<Segment[]>;
   public listOfFriends$: Observable<FaceitAccount[]>;
   public userHubs$: Observable<Hub[]>;
+  public globalRanks$: Observable<Rank[]>;
+  public tournaments$: Observable<GlobalTournament[]>;
 
   constructor(
     public authService: AuthService,
@@ -58,6 +62,19 @@ export class HomeComponent implements OnInit {
       pluck('items')
     );
 
+    this.tournaments$ = this.getTournaments().pipe(
+      shareReplay(),
+      pluck('items')
+    );
+
+    this.globalRanks$ = this.faceitAccount$.pipe(
+      switchMap((response: FaceitAccount) => {
+        return this.getGlobalRanks(response.games?.csgo.region);
+      }),
+      shareReplay(),
+      pluck('items')
+    );
+
     this.segments$ = this.userStats$.pipe(pluck('segments'));
 
     this.listOfFriends$ = this.faceitAccount$.pipe(
@@ -87,5 +104,13 @@ export class HomeComponent implements OnInit {
 
   public getUserHubs(id: string): Observable<{ items: Hub[] }> {
     return this.homeStatisticsService.getHubs(id);
+  }
+
+  public getGlobalRanks(id: string): Observable<{ items: Rank[] }> {
+    return this.homeStatisticsService.getRanks(id);
+  }
+
+  public getTournaments(): Observable<{ items: GlobalTournament[] }> {
+    return this.homeStatisticsService.getGlobalTournaments();
   }
 }

@@ -1,14 +1,16 @@
-<div class="shadow-2 surface-card border-round border-1 surface-border p-4">
+<div
+  class="shadow-2 surface-card border-round border-1 surface-border p-4 mt-3"
+>
   <app-card-header
     [title]="'Team Members'"
     [bonusMargin]="'mb-5'"
   ></app-card-header>
   <ul
     class="list-none p-0 m-0"
-    *ngFor="let friend of listOfFriends | async | slice : 0 : 4"
+    *ngFor="let friend of listOfFriends | async | slice : 0 : 3"
   >
     <li
-      class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4"
+      class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-3"
     >
       <div class="flex">
         <img

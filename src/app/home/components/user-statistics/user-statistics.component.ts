@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Hub } from 'src/app/models/Hub';
+import { GlobalTournament } from './../../../../../../csgo-backend/src/models/global-tournament';
 import { FaceitAccount } from './../../../models/FaceitAccount';
+import { Rank } from './../../../models/Rank';
 import { Segment } from './../../../models/Segment';
 import { UserStats } from './../../../models/UserStats';
 
@@ -16,6 +18,8 @@ export class UserStatisticsComponent implements OnInit {
   @Input() listOfFriends$: Observable<FaceitAccount[]>;
   @Input() segments$: Observable<Segment[]>;
   @Input() userHubs$: Observable<Hub[]>;
+  @Input() globalRanks$: Observable<Rank[]>;
+  @Input() tournaments$: Observable<GlobalTournament[]>;
 
   constructor() {}
 
