@@ -1,19 +1,20 @@
-<div class="flex justify-content-center align-items-center">
-  <div class="surface-card p-4 mt-5 shadow-2 border-round w-full md:w-10">
-    <app-form-header>
-      <div class="text-center mb-5">
-        <div class="text-900 text-3xl font-medium mb-3">{{ title }}</div>
-        <span class="text-600 font-medium line-height-3">{{ subtitle }}</span>
-        <a
-          [routerLink]="[formLink]"
-          routerLinkActive="router-link-active"
-          class="font-medium no-underline ml-2 text-blue-500 cursor-pointer"
-        >
-          {{ joinUs }}
-        </a>
-      </div>
-    </app-form-header>
+<div
+  class="w-full surface-card py-8 px-5 sm:px-8"
+  [ngStyle]="{ 'border-radius': '53px' }"
+>
+  <app-form-header>
+    <div class="text-center mb-5">
+      <div class="text-900 text-3xl font-medium mb-3">{{ title }}</div>
+      <span class="text-600 font-medium line-height-3">{{ subtitle }}</span>
+      <a
+        [routerLink]="[formLink]"
+        routerLinkActive="router-link-active"
+        class="font-medium no-underline ml-2 text-blue-500 cursor-pointer"
+      >
+        {{ joinUs }}
+      </a>
+    </div>
+  </app-form-header>
 
-    <ng-content></ng-content>
-  </div>
+  <ng-content></ng-content>
 </div>
