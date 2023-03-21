@@ -26,6 +26,8 @@ import { SlideMenuModule } from 'primeng/slidemenu';
 import { SpeedDialModule } from 'primeng/speeddial';
 import { StyleClassModule } from 'primeng/styleclass';
 import { TabViewModule } from 'primeng/tabview';
+import { HomeMatchesComponent } from './components/home-matches/home-matches.component';
+import { HomeTournamentComponent } from './components/home-tournament/home-tournament.component';
 import { MapSegmentsComponent } from './components/map-segments/map-segments.component';
 import { RankingListComponent } from './components/ranking-list/ranking-list.component';
 import { RatesComponent } from './components/rates/rates.component';
@@ -37,8 +39,6 @@ import { TeamMembersComponent } from './components/team-members/team-members.com
 import { UserHubsComponent } from './components/user-hubs/user-hubs.component';
 import { UserInformationsComponent } from './components/user-informations/user-informations.component';
 import { UserStatisticsComponent } from './components/user-statistics/user-statistics.component';
-import { HomeTournamentComponent } from './components/home-tournament/home-tournament.component';
-import { HomeMatchesComponent } from './components/home-matches/home-matches.component';
 
 @NgModule({
   declarations: [

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { User } from './../models/User';
 
@@ -41,7 +41,7 @@ export class AuthService {
         withCredentials: true,
       })
       .pipe(
-        tap((response) => {
+        tap(() => {
           this.signedIn$.next(true);
         })
       );
@@ -51,7 +51,7 @@ export class AuthService {
     return this.http
       .post<User>(`${this.rootUrl}/auth/signin`, credentials)
       .pipe(
-        tap((response) => {
+        tap(() => {
           this.signedIn$.next(true);
         })
       );
@@ -65,7 +65,7 @@ export class AuthService {
     );
   }
 
-  checkAuthStatus() {
+  checkAuthStatus(): Observable<AuthCheckResponse> {
     return this.http
       .get<AuthCheckResponse>(`${this.rootUrl}/auth/signedin`)
       .pipe(

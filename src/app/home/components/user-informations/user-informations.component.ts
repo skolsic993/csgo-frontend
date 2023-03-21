@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
 import { FaceitAccount } from './../../../models/FaceitAccount';
 
 @Component({
@@ -9,7 +11,12 @@ import { FaceitAccount } from './../../../models/FaceitAccount';
 export class UserInformationsComponent implements OnInit {
   @Input() faceitAccount: FaceitAccount;
 
-  constructor() {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {}
+
+  public signout(): void {
+    this.authService.signout().subscribe();
+    this.router.navigateByUrl('/signin');
+  }
 }

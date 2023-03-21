@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, pluck } from 'rxjs';
 import { map, shareReplay, switchMap } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/auth.service';
@@ -27,7 +28,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
-    private homeStatisticsService: HomeStatisticsServiceService
+    private homeStatisticsService: HomeStatisticsServiceService,
+    private router: Router
   ) {
     this.signedIn$ = this.authService.signedIn$;
   }

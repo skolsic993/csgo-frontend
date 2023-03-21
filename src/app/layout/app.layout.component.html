@@ -1,14 +1,56 @@
-<div class="layout-wrapper" [ngClass]="containerClass">
+<ng-container *ngIf="signedIn$ | async">
+  <div class="layout-wrapper" [ngClass]="containerClass">
     <app-topbar></app-topbar>
     <div class="layout-sidebar">
-        <app-sidebar></app-sidebar>
+      <app-sidebar></app-sidebar>
     </div>
     <div class="layout-main-container">
-        <div class="layout-main">
-            <router-outlet></router-outlet>
-        </div>
-        <app-footer></app-footer>
+      <div class="layout-main">
+        <router-outlet></router-outlet>
+      </div>
+      <app-footer></app-footer>
     </div>
     <app-config></app-config>
     <div class="layout-mask"></div>
-</div>
+  </div>
+</ng-container>
+<ng-container *ngIf="!(signedIn$ | async)">
+  <div
+    class="surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden"
+  >
+    <div class="flex flex-column align-items-center justify-content-center">
+      <div
+        [ngStyle]="{
+          'border-radius': '56px',
+          padding: '0.3rem',
+          background:
+            'linear-gradient(180deg, rgba(236, 72, 153, 1) 10%, rgba(247, 149, 48, 0) 30%)'
+        }"
+      >
+        <div
+          class="w-full surface-card py-8 px-5 sm:px-8 flex flex-column align-items-center"
+          [ngStyle]="{ 'border-radius': '53px' }"
+        >
+          <div
+            class="flex justify-content-center align-items-center bg-pink-500 border-circle"
+            [ngStyle]="{ height: '3.2rem', width: '3.2rem' }"
+          >
+            <i class="pi pi-fw pi-exclamation-circle text-2xl text-white"></i>
+          </div>
+          <h1 class="text-900 font-bold text-5xl mb-2">Access Denied</h1>
+          <div class="text-600 mb-5">
+            You do not have the necessary permisions!
+          </div>
+
+          <button
+            pButton
+            icon="pi pi-arrow-left"
+            class="p-button-text"
+            (click)="redirectToLogin()"
+            label="Go to login page"
+          ></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
