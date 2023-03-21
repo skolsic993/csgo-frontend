@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Hub } from 'src/app/models/Hub';
 
@@ -10,7 +11,11 @@ import { Hub } from 'src/app/models/Hub';
 export class UserHubsComponent implements OnInit {
   @Input() userHubs$: Observable<Hub[]>;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
+
+  redirectToHubs(): void {
+    this.router.navigateByUrl('/hubs');
+  }
 }

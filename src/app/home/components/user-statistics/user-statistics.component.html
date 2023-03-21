@@ -10,26 +10,26 @@
 </div>
 
 <section>
-  <div class="grid">
-    <div class="col-12 lg:col-6 xl:col-3">
+  <div class="grid surface-ground pb-2">
+    <div class="col-12 md:col-6 lg:col-6 xl:col-3">
       <app-rates
         [title]="'Win Rate'"
         [rate]="(userStats$ | async)?.lifetime['Wins'] + ' wins'"
         [average]="'%' + (userStats$ | async)?.lifetime['Win Rate %']"
         [text]="'win rate'"
-        [icon]="'pi-percentage'"
+        [icon]="'pi-star-fill'"
       ></app-rates>
     </div>
-    <div class="col-12 lg:col-6 xl:col-3">
+    <div class="col-12 md:col-6 lg:col-6 xl:col-3">
       <app-rates
         [title]="'Average'"
         [rate]="(userStats$ | async)?.lifetime['Average K/D Ratio'] + ' K/D'"
         [average]="'%' + (userStats$ | async)?.lifetime['Average Headshots %']"
         [text]="'average headshots'"
-        [icon]="'pi-percentage'"
+        [icon]="'pi-sort-numeric-up'"
       ></app-rates>
     </div>
-    <div class="col-12 lg:col-6 xl:col-3">
+    <div class="col-12 md:col-6 lg:col-6 xl:col-3">
       <app-rates
         [title]="'Streak'"
         [rate]="
@@ -37,36 +37,41 @@
         "
         [average]="(userStats$ | async)?.lifetime['Current Win Streak']"
         [text]="'current win streak'"
-        [icon]="'pi-sort-numeric-down'"
+        [icon]="'pi-sort-numeric-down-alt'"
       ></app-rates>
     </div>
-    <div class="col-12 lg:col-6 xl:col-3">
+    <div class="col-12 md:col-6 lg:col-6 xl:col-3">
       <app-rates
         [title]="'General'"
         [rate]="(userStats$ | async)?.lifetime['Matches'] + ' matches'"
         [average]="(userStats$ | async)?.lifetime['Total Headshots %']"
         [text]="'total headshots'"
-        [icon]="'pi-sort-numeric-up-alt'"
+        [icon]="'pi-sort-amount-up'"
       ></app-rates>
     </div>
-    <div class="col-12 xl:col-5">
-      <div class="surface-ground md:px-12 lg:px-12">
-        <div class="grid">
-          <div class="col-12 lg:col-12 p-2">
-            <app-map-segments [segments$]="segments$"></app-map-segments>
-          </div>
-        </div>
-      </div>
+  </div>
+  <div class="grid">
+    <div class="col-12 md:col-6 xl:col-5 h-full">
+      <app-map-segments [segments$]="segments$"></app-map-segments>
+      <app-home-championship></app-home-championship>
     </div>
-    <div class="col-12 xl:col-3">
-      <app-user-hubs [userHubs$]="userHubs$"></app-user-hubs>
 
-      <app-ranking-list [globalRanks$]="globalRanks$"></app-ranking-list>
-    </div>
-    <div class="col-12 xl:col-4">
+    <div class="col-12 md:col-6 xl:col-4">
       <app-home-tournament></app-home-tournament>
       <app-home-matches></app-home-matches>
-      <app-team-members [listOfFriends]="listOfFriends$"></app-team-members>
+      <app-user-hubs></app-user-hubs>
+    </div>
+
+    <div
+      class="flex col-12 md:col-12 xl:col-3 flex-column sm:flex-row xl:flex-column"
+    >
+      <div class="sm:mr-3 xl:mr-0 w-full">
+        <app-team-members [listOfFriends]="listOfFriends$"></app-team-members>
+      </div>
+
+      <div class="w-full">
+        <app-ranking-list [globalRanks$]="globalRanks$"></app-ranking-list>
+      </div>
     </div>
   </div>
 </section>

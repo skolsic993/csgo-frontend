@@ -1,36 +1,29 @@
-<div class="shadow-2 surface-card border-round border-1 surface-border p-4">
-  <app-card-header
-    [title]="'Tournaments'"
-    [bonusMargin]="'xs:mb-2 md:mb-3 xl:mb-3'"
-  >
-    <span>
-      <button
-        pButton
-        pRipple
-        type="button"
-        class="bg-purple-600 text-white"
-        [label]="'View Tournaments'"
-      ></button>
-    </span>
+<div
+  class="surface-card shadow-1 p-3 border-round transition-duration-400 hover:shadow-3 cursor-pointer"
+  (click)="redirectToTournament()"
+>
+  <app-card-header [title]="'Tournaments'" [bonusMargin]="'mb-2'">
   </app-card-header>
 
-  <div class="flex mt-3">
-    <div class="flex flex-direction-row">
-      <div class="flex flex-direction-row">
-        <div
-          class="flex align-items-center justify-content-center bg-indigo-500 border-round"
-          style="width: 2.5rem; height: 2.5rem"
-        >
-          <img
-            src="assets/images/trophy.png"
-            alt="Trophy"
-            style="width: 1.25rem"
-          />
-        </div>
-        <div class="ml-2">
-          <span class="block text-500 text-xs mb-1"> Tournaments </span>
-          <span class="block text-500 text-blue-400 font-medium"> 50 </span>
-        </div>
+  <div class="flex flex-wrap">
+    <div class="flex mt-4">
+      <div
+        class="flex align-items-center justify-content-center bg-indigo-500 border-round"
+        style="width: 2.5rem; height: 2.5rem"
+      >
+        <img
+          src="assets/images/trophy.png"
+          alt="Trophy"
+          style="width: 1.25rem"
+        />
+      </div>
+      <div class="ml-2">
+        <span class="block text-600 text-xs mb-1 font-medium">
+          Tournaments
+        </span>
+        <span class="block text-indigo-500 text-600 mb-1 font-medium">
+          50
+        </span>
       </div>
 
       <div class="flex flex-direction-row ml-4">
@@ -38,14 +31,13 @@
           class="flex align-items-center justify-content-center bg-yellow-500 border-round"
           style="width: 2.5rem; height: 2.5rem"
         >
-          <i
-            class="pi text-pink-50 pi-chart-line"
-            style="font-size: 1.5rem"
-          ></i>
+          <i class="pi text-pink-50 pi-star" style="font-size: 1.5rem"></i>
         </div>
         <div class="ml-2">
-          <span class="block text-500 text-xs mb-1"> Points </span>
-          <span class="block text-500 text-blue-400 font-medium"> 125.5K </span>
+          <span class="block text-600 text-xs mb-1 font-medium"> Points </span>
+          <span class="block text-yellow-500 text-600 mb-1 font-medium">
+            125.5K
+          </span>
         </div>
       </div>
     </div>

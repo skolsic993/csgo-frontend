@@ -1,25 +1,28 @@
-<div class="surface-card shadow-2 p-3 border-1 surface-border border-round">
+<div
+  class="surface-card shadow-1 p-3 border-round transition-duration-400 hover:shadow-3"
+>
   <div class="flex justify-content-between mb-3">
     <div>
       <span class="block text-500 font-medium mb-3">{{ title }}</span>
-      <div class="text-900 font-medium text-xl">
-        {{ rate }}
-      </div>
+      <div class="text-900 font-medium text-xl">{{ rate }}</div>
     </div>
     <div
       class="flex align-items-center justify-content-center bg-blue-100 border-round"
-      style="width: 2.5rem; height: 2.5rem"
+      [ngStyle]="{ width: '2.5rem', height: '2.5rem' }"
     >
-      <i class="pi text-blue-500" [ngClass]="icon"></i>
+      <i class="pi text-indigo-500 text-xl" [ngClass]="icon"></i>
     </div>
   </div>
+
   <span
-    class="font-medium"
+    class="text-500 font-medium"
     [ngClass]="
       +average?.replace('%', '') >= 50 ? 'text-green-500' : 'text-red-500'
     "
+    c
   >
     {{ average }}
   </span>
-  <span class="text-500">{{ text }}</span>
+
+  <span class="text-500 font-medium">{{ text }}</span>
 </div>

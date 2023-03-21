@@ -1,44 +1,32 @@
 <div
-  class="shadow-2 surface-card border-round border-1 surface-border p-4 mt-3"
+  class="surface-card shadow-1 p-3 border-round mb-3 transition-duration-400 hover:shadow-3 cursor-pointer"
 >
   <app-card-header
     [title]="'Team Members'"
-    [bonusMargin]="'mb-5'"
+    [bonusMargin]="'mb-2'"
   ></app-card-header>
-  <ul
-    class="list-none p-0 m-0"
+
+  <div
+    class="flex flex-column"
     *ngFor="let friend of listOfFriends | async | slice : 0 : 3"
   >
-    <li
-      class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-3"
-    >
-      <div class="flex">
+    <div class="flex mt-4">
+      <div class="flex align-items-center justify-content-between border-round">
         <img
           [src]="friend?.avatar || 'assets/images/user-icon.png'"
-          class="mr-3 border-circle"
-          style="width: 45px; height: 45px"
+          class="border-circle"
+          style="width: 35px; height: 35px"
         />
-        <div>
-          <span class="block text-900 font-medium mb-1">
-            {{ friend?.nickname }}
-          </span>
-          <div class="text-600">{{ friend?.steam_nickname }}</div>
+      </div>
+
+      <div class="flex justify-content-between ml-3 flex-wrap w-full">
+        <div class="flex flex-column justify-content-between">
+          <span class="text-lg">{{ friend?.steam_nickname }}</span>
+          <span class="block text-600 text-xs font-medium">{{
+            friend?.nickname
+          }}</span>
         </div>
       </div>
-      <div class="mt-2 md:mt-0 flex flex-nowrap">
-        <a
-          [href]="friend?.faceit_url"
-          target="_blank"
-          style="text-decoration: none"
-        >
-          <button
-            pButton
-            pRipple
-            icon="pi pi-arrow-up-right"
-            class="p-button-text p-button-rounded mr-1"
-          ></button>
-        </a>
-      </div>
-    </li>
-  </ul>
+    </div>
+  </div>
 </div>

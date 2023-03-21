@@ -1,27 +1,38 @@
 <div
-  class="shadow-2 surface-card border-round border-1 surface-border p-4 mb-3"
+  class="surface-card shadow-1 p-3 border-round transition-duration-400 hover:shadow-3 cursor-pointer mt-3"
+  (click)="redirectToHubs()"
 >
-  <app-card-header [title]="'User Hubs'" [bonusMargin]="'mb-5'">
-    <span>
-      <button
-        pButton
-        pRipple
-        type="button"
-        class="bg-purple-600 text-white"
-        [label]="'View User Hubs'"
-      ></button>
-    </span>
-  </app-card-header>
+  <app-card-header [title]="'Hubs'" [bonusMargin]="'mb-2'"> </app-card-header>
 
-  <ul class="list-none p-0 m-0 flex gap-3 flex-wrap">
-    <li *ngFor="let userHub of userHubs$ | async | slice : 0 : 3">
-      <button
-        pButton
-        pRipple
-        type="button"
-        class="p-button-outlined p-button-success"
-        [label]="userHub?.name"
-      ></button>
-    </li>
-  </ul>
+  <div class="flex flex-wrap">
+    <div class="flex mt-4">
+      <div
+        class="flex align-items-center justify-content-center bg-indigo-500 border-round"
+        style="width: 2.5rem; height: 2.5rem"
+      >
+        <i class="pi text-pink-700 pi-flag" style="font-size: 1.5rem"></i>
+      </div>
+      <div class="ml-2">
+        <span class="block text-600 text-xs mb-1 font-medium"> Hubs </span>
+        <span class="block text-indigo-500 text-600 mb-1 font-medium">
+          240
+        </span>
+      </div>
+
+      <div class="flex flex-direction-row ml-4">
+        <div
+          class="flex align-items-center justify-content-center bg-red-500 border-round"
+          style="width: 2.5rem; height: 2.5rem"
+        >
+          <i class="pi text-pink-50 pi-users" style="font-size: 1.5rem"></i>
+        </div>
+        <div class="ml-2">
+          <span class="block text-600 text-xs mb-1 font-medium"> People </span>
+          <span class="block text-yellow-500 text-600 mb-1 font-medium">
+            4K
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
