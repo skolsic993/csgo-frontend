@@ -20,9 +20,12 @@ import { ButtonModule } from 'primeng/button';
 import { TournamentOrganizerComponent } from './tournament-organizer/tournament-organizer.component';
 import { TournamentDetailsComponent } from './tournament-details/tournament-details.component';
 import { TournamentOverviewComponent } from './tournament-overview/tournament-overview.component';
+import { TournamentsComponent } from './tournaments/tournaments.component';
+import { TournamentHeaderCardsComponent } from './tournament-header-cards/tournament-header-cards.component';
+import { TournamentHeaderCardComponent } from './tournament-header-card/tournament-header-card.component';
 
 @NgModule({
-  declarations: [TournamentSearchComponent, TournamentCardComponent, TournamentOrganizerComponent, TournamentDetailsComponent, TournamentOverviewComponent],
+  declarations: [TournamentSearchComponent, TournamentCardComponent, TournamentOrganizerComponent, TournamentDetailsComponent, TournamentOverviewComponent, TournamentsComponent, TournamentHeaderCardsComponent, TournamentHeaderCardComponent],
   imports: [
     CommonModule, 
     TournamentRoutingModule, 
