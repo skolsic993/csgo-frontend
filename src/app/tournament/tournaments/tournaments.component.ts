@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, pluck } from 'rxjs';
+import { Tournament } from 'src/app/models/Tournament';
+import { TournamentService } from './../tournament.service';
 
 @Component({
   selector: 'app-tournaments',
@@ -6,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tournaments.component.scss'],
 })
 export class TournamentsComponent implements OnInit {
-  constructor() {}
+  public tournaments$: Observable<Tournament[]>;
 
-  ngOnInit(): void {}
+  constructor(private tournamentService: TournamentService) {}
+
+  ngOnInit(): void {
+    this.tournaments$ = this.tournamentService
+      .getAllTournaments()
+      .pipe(pluck('items'));
+  }
 }

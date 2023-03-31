@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authService.checkAuthStatus().subscribe();
+    //this.authService.checkAuthStatus().subscribe();
 
     this.faceitAccount$ = this.authService.nick$.pipe(
       switchMap((nick: string) => {

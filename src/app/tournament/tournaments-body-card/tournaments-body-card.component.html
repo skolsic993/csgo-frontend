@@ -1,0 +1,32 @@
+<li
+  class="p-3 flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-2 surface-card shadow-1 border-round cursor-pointer transition-duration-400 hover:shadow-3"
+  (click)="redirectToDetailsPage(tournament?.tournament_id)"
+>
+  <div class="mb-3 lg:mb-0">
+    <span class="text-900 font-medium text-xl">
+      {{ tournament?.name }}
+    </span>
+    <div class="mt-3 lg:mt-2 text-600">
+      <p-badge
+        [value]="tournament?.status"
+        [severity]="tournament?.status === 'cancelled' ? 'danger' : 'success'"
+        class="mr-2"
+      ></p-badge>
+      <p-badge
+        [value]="tournament?.invite_type"
+        severity="info"
+        class="mr-2"
+      ></p-badge>
+      <p-badge
+        [value]="tournament?.region"
+        severity="info"
+        class="mr-2"
+      ></p-badge>
+      <p-badge
+        [value]="tournament?.membership_type"
+        severity="info"
+        class="mr-2"
+      ></p-badge>
+    </div>
+  </div>
+</li>

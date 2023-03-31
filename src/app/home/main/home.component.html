@@ -1,23 +1,13 @@
 <ng-container *ngIf="authService.signedIn$ | async">
-  <div class="min-h-screen flex surface-ground">
-    <app-side-navigation></app-side-navigation>
-    <div class="min-h-screen flex flex-column relative flex-auto">
-      <app-navigation></app-navigation>
-
-      <div class="flex flex-column flex-auto">
-        <app-user-statistics
-          [faceitAccount$]="faceitAccount$"
-          [userStats$]="userStats$"
-          [listOfFriends$]="listOfFriends$"
-          [segments$]="segments$"
-          [userHubs$]="userHubs$"
-          [globalRanks$]="globalRanks$"
-          [tournaments$]="tournaments$"
-        ></app-user-statistics>
-      </div>
-    </div>
+  <div class="flex flex-column flex-auto">
+    <app-user-statistics
+      [faceitAccount$]="faceitAccount$"
+      [userStats$]="userStats$"
+      [listOfFriends$]="listOfFriends$"
+      [segments$]="segments$"
+      [userHubs$]="userHubs$"
+      [globalRanks$]="globalRanks$"
+      [tournaments$]="tournaments$"
+    ></app-user-statistics>
   </div>
-</ng-container>
-<ng-container *ngIf="!(authService.signedIn$ | async)">
-  <h1>MORA SE LOGUJES</h1>
 </ng-container>

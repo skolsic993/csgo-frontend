@@ -1,10 +1,4 @@
-import {
-  Component,
-  HostListener,
-  Input,
-  OnInit,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { combineLatest, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ChartConfig } from 'src/app/models/ChartConfig';
@@ -37,30 +31,11 @@ export class PolerAreaChartComponent implements OnInit {
     this.setData();
     this.getResults();
     this.updateChartOptions();
-
-    if (window.innerWidth < 700) {
-      this.setDataWithoutLabels();
-      this.getResults();
-    } else {
-      this.setData();
-      this.getResults();
-    }
   }
 
   ngOnChanges(changes: SimpleChanges) {
     this.setData();
     this.getResults();
-  }
-
-  @HostListener('window:resize', ['$event'])
-  onResize(event) {
-    if (window.innerWidth < 700) {
-      this.setDataWithoutLabels();
-      this.getResults();
-    } else {
-      this.setData();
-      this.getResults();
-    }
   }
 
   private getResults(): void {
@@ -69,13 +44,11 @@ export class PolerAreaChartComponent implements OnInit {
         return {
           ...data,
           ...(data.datasets[0].data = [
-            selectedMap?.stats['Headshots per Match'],
-            selectedMap?.stats['Win Rate %'],
             selectedMap?.stats['Average Kills'],
-            selectedMap?.stats['Average Headshots %'],
             selectedMap?.stats['Average Assists'],
-            selectedMap?.stats['Average MVPs'],
             selectedMap?.stats['Average Deaths'],
+            selectedMap?.stats['Headshots per Match'],
+            selectedMap?.stats['Average MVPs'],
           ]),
         };
       })
@@ -95,13 +68,11 @@ export class PolerAreaChartComponent implements OnInit {
         responsive: true,
       },
       labels: [
-        'Headshots per Match %',
-        'Win Rate %',
-        'Average Kills %',
-        'Average Headshots %',
-        'Average Assists %',
-        'Average MVPs %',
-        'Average Deaths %',
+        'Average Kills',
+        'Average Assists',
+        'Average Deaths',
+        'Headshots per Match',
+        'Average MVPs',
       ],
     });
   }
@@ -146,16 +117,16 @@ export class PolerAreaChartComponent implements OnInit {
     return {
       plugins: {
         legend: {
-          labels: {
-            color: '#ccfc47',
-          },
-          position: 'right',
+          display: false,
         },
       },
       scales: {
         r: {
           grid: {
-            color: '#ccfc47',
+            color: 'rgba(0, 0, 0, 0.09)',
+          },
+          ticks: {
+            display: false,
           },
         },
       },
@@ -166,10 +137,7 @@ export class PolerAreaChartComponent implements OnInit {
     return {
       plugins: {
         legend: {
-          labels: {
-            color: '#ebedef',
-          },
-          position: 'top',
+          display: false,
         },
         datalabels: {
           display: false,
@@ -178,7 +146,7 @@ export class PolerAreaChartComponent implements OnInit {
       scales: {
         r: {
           grid: {
-            color: 'rgba(255,255,255,0.1)',
+            color: 'rgba(0, 0, 0, 0.09)',
           },
           ticks: {
             display: false,

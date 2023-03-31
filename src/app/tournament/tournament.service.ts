@@ -1,7 +1,7 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable, pluck } from 'rxjs';
 import { Tournament } from './../models/Tournament';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 
 interface TournamentResponse {
   start: number;
@@ -10,21 +10,35 @@ interface TournamentResponse {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TournamentService {
-
   constructor(private http: HttpClient) {}
 
-  searchTournaments(credentials: any): Observable<Tournament[]> {
-    const url: string = 'https://counter-strike-backend.herokuapp.com/api/tournaments'
+  getAllTournaments(): Observable<{ items: Tournament[] }> {
+    const url = 'http://localhost:1337/api/tournaments';
 
-    return this.http.get<TournamentResponse>(`${url}/${credentials.name}`)
+    return this.http.get<{ items: Tournament[] }>(`${url}`);
+  }
+
+  getTournamentDetails(id: string): Observable<Tournament> {
+    const url = 'http://localhost:1337/api/tournaments';
+
+    return this.http.get<Tournament>(`${url}/${id}/details`);
+  }
+
+  searchTournaments(credentials: any): Observable<Tournament[]> {
+    const url: string =
+      'https://counter-strike-backend.herokuapp.com/api/tournaments';
+
+    return this.http
+      .get<TournamentResponse>(`${url}/${credentials.name}`)
       .pipe(pluck('items'));
   }
 
   getOrganizer(id: string) {
-    const url = 'https://counter-strike-backend.herokuapp.com/api/tournaments/organizer';
+    const url =
+      'https://counter-strike-backend.herokuapp.com/api/tournaments/organizer';
 
     return this.http.get<any>(`${url}/${id}`);
   }

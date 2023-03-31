@@ -39,6 +39,7 @@ import { TeamMembersComponent } from './components/team-members/team-members.com
 import { UserHubsComponent } from './components/user-hubs/user-hubs.component';
 import { UserInformationsComponent } from './components/user-informations/user-informations.component';
 import { UserStatisticsComponent } from './components/user-statistics/user-statistics.component';
+import { HomeChampionshipComponent } from './components/home-championship/home-championship.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { UserStatisticsComponent } from './components/user-statistics/user-stati
     RankingListComponent,
     HomeTournamentComponent,
     HomeMatchesComponent,
+    HomeChampionshipComponent,
   ],
   imports: [
     CommonModule,

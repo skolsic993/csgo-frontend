@@ -1,1 +1,81 @@
-<p>tournament-header-cards works!</p>
+<div class="grid mb-2">
+  <div class="col-12 md:col-6 lg:col-6 xl:col-3">
+    <app-tournament-header-card
+      [image]="'assets/images/trophy.png'"
+      [icon]="''"
+      [title]="'725'"
+      [subtitle]="'Tournaments'"
+      [background]="'bg-indigo-500'"
+    >
+      <span
+        class="text-green-500 text-sm absolute top-0 right-0 flex align-items-center"
+      >
+        <i
+          class="pi text-green-500 pi-angle-up"
+          [ngStyle]="{ 'font-size': '1.2rem', color: '#48ff66' }"
+        ></i>
+        25.8%
+      </span>
+    </app-tournament-header-card>
+  </div>
+
+  <div class="col-12 md:col-6 lg:col-6 xl:col-3">
+    <app-tournament-header-card
+      [image]="'assets/images/trophy.png'"
+      [icon]="''"
+      [title]="'231'"
+      [subtitle]="'Total played'"
+      [background]="'bg-indigo-500'"
+    >
+      <span
+        class="text-red-500 text-sm absolute top-0 right-0 flex align-items-center"
+      >
+        <i
+          class="pi text-red-500 pi-angle-down"
+          [ngStyle]="{ 'font-size': '1.2rem', color: '#48ff66' }"
+        ></i>
+        5.823%
+      </span>
+    </app-tournament-header-card>
+  </div>
+
+  <div class="col-12 md:col-6 lg:col-6 xl:col-3">
+    <app-tournament-header-card
+      [image]="''"
+      [icon]="'pi-star'"
+      [title]="'89K'"
+      [subtitle]="'Total points'"
+      [background]="'bg-yellow-500'"
+    >
+      <span
+        class="text-green-500 text-sm absolute top-0 right-0 flex align-items-center"
+      >
+        <i
+          class="pi text-green-500 pi-angle-up"
+          [ngStyle]="{ 'font-size': '1.2rem', color: '#48ff66' }"
+        ></i>
+        12.3%
+      </span>
+    </app-tournament-header-card>
+  </div>
+
+  <div class="col-12 md:col-6 lg:col-6 xl:col-3">
+    <app-tournament-header-card
+      [image]="''"
+      [icon]="'pi-users'"
+      [title]="'4.24'"
+      [subtitle]="'New players'"
+      [background]="'bg-red-500'"
+    >
+      <span
+        class="text-red-500 text-sm absolute top-0 right-0 flex align-items-center"
+      >
+        <i
+          class="pi text-red-500 pi-angle-down"
+          [ngStyle]="{ 'font-size': '1.2rem', color: '#48ff66' }"
+        ></i>
+        9.23%
+      </span>
+    </app-tournament-header-card>
+  </div>
+</div>

@@ -1,6 +1,10 @@
-<p-chart
-  type="polarArea"
-  [data]="results$ | async"
-  [options]="chartOptions"
-  [style]="{ width: '100%' }"
-></p-chart>
+<div
+  class="flex w-full justify-content-center align-items-center"
+  [style]="{ 'max-width': '300px' }"
+>
+  <p-chart
+    type="polarArea"
+    [data]="results$ | async"
+    [options]="chartOptions"
+  ></p-chart>
+</div>

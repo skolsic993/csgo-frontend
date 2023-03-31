@@ -1,0 +1,11 @@
+<section>
+  <div className="border-round mb-1">
+    <ng-container
+      *ngFor="let tournament of tournaments$ | async | slice : 0 : 10"
+    >
+      <app-tournaments-body-card
+        [tournament]="tournament"
+      ></app-tournaments-body-card>
+    </ng-container>
+  </div>
+</section>

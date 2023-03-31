@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AppLayoutComponent } from '../layout/app.layout.component';
 import { MatchesComponent } from './matches/matches.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: MatchesComponent,
+    component: AppLayoutComponent,
+    children: [{ path: '', component: MatchesComponent }],
   },
 ];
 

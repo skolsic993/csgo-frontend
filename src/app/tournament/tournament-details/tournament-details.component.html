@@ -1,1 +1,69 @@
-<p>tournament-details works!</p>
+<div class="grid">
+  <div class="col-12 md:col-6 xl:col-4">
+    <div
+      class="surface-card shadow-1 p-4 border-round flex flex-column justify-content-center align-items-center transition-duration-400 hover:shadow-3"
+    >
+      <div class="bg-indigo-500 p-3 border-round">
+        <img
+          [src]="'assets/images/trophy.png'"
+          alt="Tournament"
+          class="w-7rem h-5rem"
+          [ngStyle]="{ 'object-fit': 'contain' }"
+        />
+      </div>
+
+      <h2 class="text-4xl font-medium mt-3 mb-0">
+        {{ (tournament$ | async)?.name }}
+      </h2>
+      <p-divider></p-divider>
+
+      <div className="flex flex-wrap mb-4">
+        <app-tournament-details-segment
+          [title]="(tournament$ | async)?.game_id ? '' : ''"
+          [subtitle]="'Game'"
+          [background]="'bg-purple-500'"
+        >
+          <img
+            src="assets/images/csgo-icon.png"
+            alt="CounterStrikeIcon"
+            className="w-full"
+          />
+        </app-tournament-details-segment>
+
+        <app-tournament-details-segment
+          [title]="(tournament$ | async)?.match_type ? '5v5' : ''"
+          [subtitle]="'Team size'"
+          [background]="'bg-red-500'"
+        >
+          <i className="pi text-indigo-50 text-xl pi-users"></i>
+        </app-tournament-details-segment>
+      </div>
+
+      <div className="flex flex-wrap mb-4">
+        <app-tournament-details-segment
+          [title]="
+            (tournament$ | async)?.anticheat_required
+              ? 'Required'
+              : 'Not required'
+          "
+          [subtitle]="'Anticheat'"
+          [background]="'bg-purple-500'"
+        >
+          <img
+            src="assets/images/anticheat.png"
+            alt="CounterStrikeIcon"
+            className="w-full"
+          />
+        </app-tournament-details-segment>
+
+        <app-tournament-details-segment
+          [title]="(tournament$ | async)?.total_prize"
+          [subtitle]="'Prize pool'"
+          [background]="'bg-yellow-500'"
+        >
+          <i className="pi text-indigo-50 text-xl pi-star"></i>
+        </app-tournament-details-segment>
+      </div>
+    </div>
+  </div>
+</div>

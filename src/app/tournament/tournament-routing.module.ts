@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppLayoutComponent } from '../layout/app.layout.component';
-import { TournamentOrganizerComponent } from './tournament-organizer/tournament-organizer.component';
+import { TournamentDetailsComponent } from './tournament-details/tournament-details.component';
 import { TournamentsComponent } from './tournaments/tournaments.component';
 
 const routes: Routes = [
@@ -12,7 +12,8 @@ const routes: Routes = [
   },
   {
     path: ':id',
-    component: TournamentOrganizerComponent,
+    component: AppLayoutComponent,
+    children: [{ path: '', component: TournamentDetailsComponent }],
   },
 ];
 
