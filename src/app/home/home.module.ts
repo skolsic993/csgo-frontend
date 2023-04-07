@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { AuthHttpInterceptor } from './../auth/auth-http-interceptor';
 import { AuthModule } from './../auth/auth.module';
@@ -26,6 +26,7 @@ import { SlideMenuModule } from 'primeng/slidemenu';
 import { SpeedDialModule } from 'primeng/speeddial';
 import { StyleClassModule } from 'primeng/styleclass';
 import { TabViewModule } from 'primeng/tabview';
+import { HomeChampionshipComponent } from './components/home-championship/home-championship.component';
 import { HomeMatchesComponent } from './components/home-matches/home-matches.component';
 import { HomeTournamentComponent } from './components/home-tournament/home-tournament.component';
 import { MapSegmentsComponent } from './components/map-segments/map-segments.component';
@@ -39,7 +40,6 @@ import { TeamMembersComponent } from './components/team-members/team-members.com
 import { UserHubsComponent } from './components/user-hubs/user-hubs.component';
 import { UserInformationsComponent } from './components/user-informations/user-informations.component';
 import { UserStatisticsComponent } from './components/user-statistics/user-statistics.component';
-import { HomeChampionshipComponent } from './components/home-championship/home-championship.component';
 
 @NgModule({
   declarations: [
