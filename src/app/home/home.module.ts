@@ -40,6 +40,8 @@ import { TeamMembersComponent } from './components/team-members/team-members.com
 import { UserHubsComponent } from './components/user-hubs/user-hubs.component';
 import { UserInformationsComponent } from './components/user-informations/user-informations.component';
 import { UserStatisticsComponent } from './components/user-statistics/user-statistics.component';
+import { ChampionshipSkeletonComponent } from './components/skeleton/championship-skeleton/championship-skeleton.component';
+import { MatchSkeletonComponent } from './components/skeleton/match-skeleton/match-skeleton.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,8 @@ import { UserStatisticsComponent } from './components/user-statistics/user-stati
     HomeTournamentComponent,
     HomeMatchesComponent,
     HomeChampionshipComponent,
+    ChampionshipSkeletonComponent,
+    MatchSkeletonComponent,
   ],
   imports: [
     CommonModule,

@@ -9,7 +9,9 @@
   ></app-user-informations>
 </div>
 
-<section>
+<section
+  *ngIf="faceitAccount$ && userStats$ && listOfFriends$ && segments$ | async"
+>
   <div class="grid surface-ground pb-2">
     <div class="col-12 md:col-6 lg:col-6 xl:col-3">
       <app-rates
@@ -77,10 +79,10 @@
 </section>
 
 <ng-template #skeletonTemplate>
-  <div class="surface-section">
+  <div>
     <app-user-informations-skeleton></app-user-informations-skeleton>
-    <div class="p-5">
-      <div class="grid">
+    <div>
+      <div class="grid pb-2">
         <div class="col-12 lg:col-6 xl:col-3">
           <app-rates-skeleton></app-rates-skeleton>
         </div>
@@ -94,8 +96,13 @@
           <app-rates-skeleton></app-rates-skeleton>
         </div>
 
-        <div class="col-12 xl:col-5">
+        <div class="col-12 md:col-6 xl:col-5 h-full">
           <app-map-statistics-skeleton></app-map-statistics-skeleton>
+          <app-championship-skeleton></app-championship-skeleton>
+        </div>
+
+        <div class="col-12 md:col-6 xl:col-4">
+          <app-match-skeleton></app-match-skeleton>
         </div>
 
         <div class="col-12 xl:col-4">
