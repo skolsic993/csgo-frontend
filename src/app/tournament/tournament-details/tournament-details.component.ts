@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Tournament } from './../../../../../csgo-reacty/src/models/Tournament';
 import { TournamentService } from './../tournament.service';
+import { Tournament } from 'src/app/models/Tournament';
 
 @Component({
   selector: 'app-tournament-details',
